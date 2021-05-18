@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # どこからどこへのプルリクエストかを出力
       - name: echo branch
         run: echo '「${{ github.head_ref }}」から「${{ github.base_ref }}」へのプルリクエスト'
     
