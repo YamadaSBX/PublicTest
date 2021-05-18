@@ -1,0 +1,26 @@
+name: UnitTest
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: echo branch
+        run: echo '「${{ github.head_ref }}」から「${{ github.base_ref }}」へのプルリクエスト'
+    
+      - uses: actions/checkout@v2
+        with: 
+          ref: ${{ github.head_ref }}
+
+      - name: docker-compose up
+        run: docker-compose up --build -d
+        
+      - name: php oil t --testsuite=packages
+        run: docker-compose exec -T app bash -c "php oil t --testsuite=packages"
+
