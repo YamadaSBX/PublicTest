@@ -25,3 +25,6 @@ jobs:
       - name: php oil t --testsuite=packages
         run: docker-compose exec -T app bash -c "php oil t --testsuite=packages"
 
+      - name: php oil t --group=App
+        run: docker-compose exec -T app bash -c "php oil t --group=App"
+
